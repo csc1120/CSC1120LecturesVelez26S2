@@ -25,7 +25,7 @@ public class UnicodeDemo {
         }
         System.out.println();
     }
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) throws IOException{
         //Basic ascii characters
         char[] codes1 = {'a', '1', ' ', '@', '\n', '+'};
         printCode(codes1);
@@ -40,24 +40,25 @@ public class UnicodeDemo {
 
         //Block element unicode
         char fullBlock = '\u25a0';
-        char leftOneEight = '\u258f';
-        char backDiag = '\u259a';
-        char forwardDiag = '\u259e';
+        char leftOneEight = '\u258F';
+        char backDiag = '\u259A';
+        char forwardDiag = '\u259E';
         char[] codes4 = {fullBlock, leftOneEight, forwardDiag, backDiag};
         printCode(codes4);
-
+//
         //Printing chars together
         System.out.println(backDiag + forwardDiag + '\n'
                 + forwardDiag + backDiag);
         System.out.println(String.valueOf(backDiag)
                 + forwardDiag + '\n' + forwardDiag + backDiag);
         System.out.println();
-        System.out.println('a' + '#' + '\n' + 'A' + '!');
-        System.out.println(String.valueOf('a') + '#'
-                + '\n' + 'A' + '!');
-
+//        System.out.println('a' + '#' + '\n' + 'A' + '!');
+//        System.out.println(String.valueOf('a') + '#'
+//                + '\n' + 'A' + '!');
+//
         //Writing chars to a file
         String unicodeFile = "data/week1/unicodeExp.txt";
+
         Path filePath = Paths.get(unicodeFile);
         OutputStream out = Files.newOutputStream(filePath);
         PrintWriter printWriter = new PrintWriter(out);
@@ -67,8 +68,9 @@ public class UnicodeDemo {
         printWriter.println(String.valueOf('\u0041') + 'a'
                 + '\n' + 'A' + '!');
         printWriter.close();
+//
+//        //Reading chars from file
 
-        //Reading chars from file
         InputStream in = Files.newInputStream(filePath);
         Scanner fileIn = new Scanner(in);
         String line1 = fileIn.nextLine();

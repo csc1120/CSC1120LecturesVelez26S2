@@ -9,7 +9,6 @@
 package week1.prep;
 import java.util.InputMismatchException;
 import java.util.Scanner;
-
 public class ExceptionReview {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
