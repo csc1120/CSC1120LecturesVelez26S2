@@ -17,9 +17,9 @@ import javafx.stage.Stage;
 public class PasswordExample extends Application {
     @Override
     public void start(Stage stage) throws Exception {
-        FXMLLoader fxmlLoader = new FXMLLoader();
-        fxmlLoader.setLocation(getClass().getResource("password.fxml"));
-        Parent root = fxmlLoader.load();
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("password.fxml"));
+        Parent root = loader.load();
 
         Scene scene = new Scene(root);
         stage.setScene(scene);
