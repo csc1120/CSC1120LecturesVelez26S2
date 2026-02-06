@@ -8,8 +8,11 @@
 
 package week3.lecture;
 
+import javafx.event.ActionEvent;
+
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Consumer;
 import java.util.stream.Stream;
 
 public class ForEachExample {
@@ -22,6 +25,7 @@ public class ForEachExample {
 
         Stream<String> stringStream = list.stream();
         stringStream.forEach(ForEachExample::printEach);
+
     }
     public static void printEach(String s){
         System.out.println(s.toUpperCase());
