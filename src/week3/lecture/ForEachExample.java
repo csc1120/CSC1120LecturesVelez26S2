@@ -26,6 +26,19 @@ public class ForEachExample {
         Stream<String> stringStream = list.stream();
         stringStream.forEach(ForEachExample::printEach);
 
+        stringStream = list.stream();
+        stringStream.forEach((String s) -> {
+            System.out.println(s.charAt(0));
+        });
+
+        StringBuilder sb = new StringBuilder();
+        Consumer<String> printLast;
+        printLast = (String s) -> {
+            System.out.println(s.charAt(s.length()-1));
+            sb.append(s.charAt(s.length()-1));
+        };
+        list.stream().forEach(printLast);
+        System.out.println(sb);
     }
     public static void printEach(String s){
         System.out.println(s.toUpperCase());
