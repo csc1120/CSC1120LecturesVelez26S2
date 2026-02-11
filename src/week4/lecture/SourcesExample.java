@@ -6,7 +6,7 @@
  * Created: 2/9/2026
  */
 
-package week4.prep;
+package week4.lecture;
 
 import java.io.BufferedReader;
 import java.io.IOException;

@@ -6,7 +6,7 @@
  * Created: 2/9/2026
  */
 
-package week4.prep;
+package week4.lecture;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -34,12 +34,7 @@ public class FilterExample {
                 collect(Collectors.joining(":"));
         System.out.println(result);
 
-        List<String> words2 =
-                new ArrayList<>(Arrays.asList("the", "how", "the",
-                        "car","fast", "car", "the"));
 
-        words2.stream().distinct().forEach(System.out::println);
-        words2.stream().distinct().count();
 
     }
 }
