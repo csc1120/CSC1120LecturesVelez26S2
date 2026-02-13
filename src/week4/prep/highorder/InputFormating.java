@@ -31,15 +31,14 @@ public class InputFormating {
         System.out.println("1.All caps\n2.In Red\n3.With underscores");
         String option = scanner.nextLine();
         if(option.equals("1")){
-            //printMsg("Hello world", "caps");
+            printMsg("Hello world", "caps");
             printMsgs2(msg, (a -> System.out.println(a.toUpperCase())));
         } else if (option.equals("2")) {
-            //printMsg(msg, "red");
+            printMsg(msg, "red");
             printMsgs2(msg, (a -> System.out.println("\u001B[35m" + a + "\u001B[0m")));
         } else if (option.equals("3")){
-            //printMsg(msg, "under");
+            printMsg(msg, "under");
             printMsgs2(msg, (a -> System.out.println("_" + a + "_")));
         }
-
     }
 }
