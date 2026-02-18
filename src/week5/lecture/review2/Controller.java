@@ -42,9 +42,6 @@ public class Controller {
             System.out.println("error writing to file");
         }
     }
-
-        System.out.println("save");
-    }
     @FXML
     private void loadAction(){
         System.out.println("load");
