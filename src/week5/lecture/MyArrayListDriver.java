@@ -8,8 +8,6 @@
 
 package week5.lecture;
 
-import java.util.Scanner;
-
 public class MyArrayListDriver {
     public static void main(String[] args) {
         MyArrayList<Integer> list = new MyArrayList<>();
@@ -24,16 +22,41 @@ public class MyArrayListDriver {
         }
         list.add(-1);
         list.add(0);
+        System.out.println();
+        System.out.println();
         System.out.println("Size after "+list.size());
         for(int i = 0; i< list.size(); i++){
             System.out.print(list.get(i) + " ");
         }
-        for(int i = 0; i< 100; i++){
-            list.add(0);
-        }
-        for(int i = 0; i< list.size(); i++){
-            System.out.print(list.get(i) + " ");
-        }
+        System.out.println();
+
+//        System.out.println("List after removing "+list.remove(1));
+//        for(int i = 0; i< list.size(); i++){
+//            System.out.print(list.get(i) + " ");
+//        }
+//
+//        System.out.println();
+//        System.out.println("List after remove "+list.remove(list.size() - 1));
+//        for(int i = 0; i< list.size(); i++){
+//            System.out.print(list.get(i) + " ");
+//        }
+//
+//        System.out.println();
+//        System.out.println("List after removing " + list.remove(0));
+//        for(int i = 0; i< list.size(); i++){
+//            System.out.print(list.get(i) + " ");
+//        }
+//        System.out.println();
+//        System.out.println(list.remove(0));
+//        System.out.println(list.remove(0));
+
+
+//        for(int i = 0; i< 100; i++){
+//            list.add(0);
+//        }
+//        for(int i = 0; i< list.size(); i++){
+//            System.out.print(list.get(i) + " ");
+//        }
 
     }
 }

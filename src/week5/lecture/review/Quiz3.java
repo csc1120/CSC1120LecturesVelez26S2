@@ -6,7 +6,7 @@
  * Created: 2/18/2026
  */
 
-package week5.lecture.review2;
+package week5.lecture.review;
 
 import javafx.event.ActionEvent;
 import javafx.scene.control.Button;

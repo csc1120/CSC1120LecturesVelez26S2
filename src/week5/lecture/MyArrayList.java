@@ -15,37 +15,61 @@ public class MyArrayList<E> {
     private E[] data;
 
     @SuppressWarnings("unchecked")
-    public MyArrayList(){
+    public MyArrayList() {
         capacity = INITIAL_CAPACITY;
 
-        data = (E[])new Object[capacity];
+        data = (E[]) new Object[capacity];
         size = 0;
     }
-    public int size(){
+
+    public int size() {
         return size;
     }
-    public boolean add(E obj){
-        if(size() == capacity){
+
+    public boolean add(E obj) {
+        if (size() == capacity) {
             reallocate();
         }
         data[size] = obj;
         size++;
         return true;
     }
-    public E get(int index){
-        if(index < 0 || index >= size()){
-            throw new IndexOutOfBoundsException("Invalid index: "+index);
+
+    public E get(int index) {
+        if (index < 0 || index >= size()) {
+            throw new IndexOutOfBoundsException("Invalid index: " + index);
         }
         return data[index];
     }
-    private void reallocate(){
+
+    private void reallocate() {
         capacity = capacity * 2;
         E[] temp = (E[]) new Object[capacity];
-        for(int i = 0; i < size();i++){
+        for (int i = 0; i < size(); i++) {
             temp[i] = data[i];
         }
         data = temp;
     }
+    //remove
 
-
+    /**
+     * Removes the element at the given index
+     *
+     * @param index index of element to remove
+     * @return element that was removed
+     * @throws IndexOutOfBoundsException if the index is invalid.
+     *                                   The invalid is invalid if it is less than 0 or greater than or equal to the size.
+     */
+    public E remove(int index) {
+        if (index >= size || index < 0) {
+            throw new IndexOutOfBoundsException("Invalid index " + index);
+        }
+        E result = data[index];
+        for (int i = index; i < size - 1; i++) {
+            data[i] = data[i + 1];
+        }
+        //data[size - 1] = null;
+        size--;
+        return result;
+    }
 }

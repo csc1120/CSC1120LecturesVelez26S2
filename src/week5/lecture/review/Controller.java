@@ -8,73 +8,43 @@
 
 package week5.lecture.review;
 
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
 
-import java.io.*;
+import java.io.IOException;
+import java.io.OutputStream;
+import java.io.PrintWriter;
 import java.nio.file.Files;
-import java.nio.file.Paths;
-import java.util.Scanner;
+import java.nio.file.Path;
 
-/**
- * Controller for the review example of loading
- * and saving integer values
- */
 public class Controller {
     @FXML
     private TextField dataEntry;
     @FXML
     private TextField filenameEntry;
-    private void saveHelper(String filename, String data) throws IOException {
-        String[] tokens = data.split("\\s+");
-        try(OutputStream out = Files.newOutputStream(Paths.get(filename));
-                PrintWriter printWriter = new PrintWriter(out)){
-            for(int i = 0; i<tokens.length; i++){
-                try {
-                    int v = Integer.parseInt(tokens[i]);
-                    printWriter.print(v + " ");
-                } catch (NumberFormatException e){
-                    System.out.println("Not saving "+tokens[i]);
-                }
-            }
-        }
-    }
+
     @FXML
-    private void saveAction(ActionEvent event) {
+    private void saveAction(){
         String data = dataEntry.getText();
+        String[] tokens = data.split("\\s+");
         String filename = filenameEntry.getText();
-        try {
-            saveHelper(filename, data);
-        } catch (IOException e){
-            System.out.println("Error saving file");
-        }
-    }
-    private String loadHelper(String filename) throws IOException{
-        StringBuilder sb = new StringBuilder();
-        try(InputStream in = Files.newInputStream(Paths.get(filename));
-            Scanner sc = new Scanner(in)) {
-            while (sc.hasNext()) {
-                String input = sc.next();
+        try(OutputStream out = Files.newOutputStream(Path.of(filename));
+            PrintWriter pw = new PrintWriter(out)){
+            for(int i = 0; i<tokens.length; i++) {
                 try {
-                    int v = Integer.parseInt(input);
-                    sb.append(v).append(" ");
+                    int val = Integer.parseInt(tokens[i]);
+                    pw.print(val + " ");
                 } catch (NumberFormatException e) {
-                    System.out.println("Ignore saved value " + input);
+                    System.out.println("Token can't be save "+tokens[i]);
                 }
-                dataEntry.setText(sb.toString());
             }
+        } catch (IOException e){
+            System.out.println("error writing to file");
         }
-        return sb.toString();
     }
     @FXML
-    private void loadAction(ActionEvent event) {
-        String filename = filenameEntry.getText();
-        try{
-            String data = loadHelper(filename);
-            dataEntry.setText(data);
-        } catch (IOException e){
-            System.out.println("Error loading and reading the file: "+filename);
-        }
+    private void loadAction(){
+        System.out.println("load");
     }
+
 }

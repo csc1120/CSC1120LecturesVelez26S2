@@ -6,7 +6,7 @@
  * Created: 2/18/2026
  */
 
-package week5.lecture.review;
+package week5.prep.review;
 
 import java.util.List;
 
