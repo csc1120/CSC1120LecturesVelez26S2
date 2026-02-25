@@ -6,7 +6,7 @@
  * Created: 2/16/2026
  */
 
-package week5.lecture;
+package week6.lecture;
 
 public class MyArrayList<E> {
     private static final int INITIAL_CAPACITY = 3;
@@ -50,11 +50,8 @@ public class MyArrayList<E> {
         }
         data = temp;
     }
-    //remove
-
     /**
      * Removes the element at the given index
-     *
      * @param index index of element to remove
      * @return element that was removed
      * @throws IndexOutOfBoundsException if the index is invalid.
@@ -68,27 +65,8 @@ public class MyArrayList<E> {
         for (int i = index; i < size - 1; i++) {
             data[i] = data[i + 1];
         }
-        //data[size - 1] = null;
         size--;
         return result;
     }
 
-    public void add(int index, E e){
-        if (index > size || index < 0) {
-            throw new IndexOutOfBoundsException("Invalid index " + index);
-        }
-        if(size == capacity){
-            reallocate();
-        }
-        if(index == size){
-            add(e);
-        } else {
-            E ret = data[index];
-            for(int i = size; i - 1 >= index; i--){
-                data[i] = data[i - 1];
-            }
-            data[index] = e;
-            size++;
-        }
-    }
-}
+ }

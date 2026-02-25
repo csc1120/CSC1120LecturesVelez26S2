@@ -1,4 +1,4 @@
-package week5.prep;
+package week6.exam1review;
 
 public class MyArrayList<E> {
 
@@ -57,6 +57,7 @@ public class MyArrayList<E> {
     /**
      * Doubles the capacity of the internal storage array
      */
+
     public void reallocate(){
         capacity = capacity * 2;
         @SuppressWarnings("unchecked") E[] temp = (E[]) new Object[capacity];
@@ -88,19 +89,22 @@ public class MyArrayList<E> {
         }
         return true;
     }
-
-//    public E remove(int index){
-//        if(index < 0 || index > size() - 1){
-//            throw new IllegalArgumentException();
-//        }
-//        for(int i = index; i < size()-1; i++){
-//            data[i] = data[i + 1];
-//            size--;
-//        }
-//    }
-
-
     public E get(int index) {
         return data[index];
     }
+
+    public E removeFromMiddle() throws IllegalStateException {
+        int index = size()/2;
+        E element = data[index];
+        if(size() == 0){
+            throw new IllegalStateException("List is empty");
+        }
+        for(int i = index; i + 1 < size(); i++){
+            data[i] = data[i + 1];
+        }
+        size--;
+        return element;
+    }
+
+
 }
