@@ -27,8 +27,10 @@ public class SimpleTestPrep {
     public void testCompareNineAndEight(){
         int x = 9;
         int y = 8;
-        Assertions.assertTrue(x > y, "Error, 9 should be greater than 8");
-        Assertions.assertFalse(x < y, "Error 8 should not be greater than 9");
+        Assertions.assertTrue(x > y,
+                "Error, 9 should be greater than 8");
+        Assertions.assertFalse(x < y,
+                "Error 8 should not be greater than 9");
     }
     @DisplayName("Testing 3 plus 4 is 7")
     @Test
@@ -54,7 +56,8 @@ public class SimpleTestPrep {
     @Test
     public void testOutOfBoundsArray(){
         List<Integer> nums = new ArrayList<>();
-        Assertions.assertThrows(IndexOutOfBoundsException.class, () -> nums.get(-1),
+        Assertions.assertThrows(IndexOutOfBoundsException.class,
+                () -> nums.get(-1),
                 "Indexing at -1 should throw an IndexOutOfBoundsException");
     }
     @DisplayName("Showing what happens when an assert fails")
