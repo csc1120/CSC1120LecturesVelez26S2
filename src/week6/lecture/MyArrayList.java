@@ -25,6 +25,7 @@ public class MyArrayList<E> implements List<E> {
         size = 0;
     }
 
+    //O(1)
     public int size() {
         return size;
     }
@@ -55,7 +56,6 @@ public class MyArrayList<E> implements List<E> {
     }
 
     public boolean add(E obj) {
-
         if (size() == capacity) {
             reallocate();
         }

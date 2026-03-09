@@ -3,44 +3,37 @@
  * Spring 2026
  * Lecture Code
  * Name: Adela Velez
- * Created: 2/27/2026
+ * Created: 3/4/2026
  */
 
-package week6.lecture;
+package week6.prep;
 
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
 import java.util.ListIterator;
 
-public class MyLinkedList<E> implements List<E> {
-
+public class MyPrevLinkedList<E> implements List<E> {
     private static class Node<E> {
         private E data;
-        private Node<E> next;
-        public Node(E data){
+        private Node<E> prev;
+
+        private Node(E data){
             this.data = data;
         }
-        public Node(E data, Node<E> next){
-            this.data = data;
-            this.next = next;
+        private Node(E data, Node<E> prev){
+            this.prev = prev;
         }
     }
-    private Node<E> head;
-    //private int size;
-    public MyLinkedList(){
-        head = null;
+    private Node<E> tail;
+    private int size;
+
+    public MyPrevLinkedList(){
+        tail = null;
+        size = 0;
     }
-    //O(n)
     public int size(){
-        Node<E> walker;
-        int count = 0;
-        walker = head;
-        while(walker != null) {
-            walker = walker.next;
-            count++;
-        }
-        return count;
+        return size;
     }
 
     @Override
@@ -68,25 +61,17 @@ public class MyLinkedList<E> implements List<E> {
         return null;
     }
 
+    /**
+     * Adds the passed-in element to the back of the list.
+     * @param e element to add
+     * @return true if the operation is a success
+     */
     @Override
     public boolean add(E e) {
         Node<E> newNode = new Node<>(e);
-        //add with an empty list
-        if(head == null){
-            head = newNode;
-        } else {
-            //add with a list with stuff
-            Node<E> walker = head;
-            int count = 0;
-            while(count < size() - 1){
-            //while(walker.next != null){
-                walker = walker.next;
-                count++;
-            }
-            //hopefully walker at the end is the last node
-            walker.next = newNode;
-        }
-
+        newNode.prev = tail;
+        tail = newNode;
+        size++;
         return true;
     }
 
@@ -124,19 +109,10 @@ public class MyLinkedList<E> implements List<E> {
     public void clear() {
 
     }
-    private Node<E> getNode(int index){
-        Node<E> walker = head;
-        for(int i = 0; i<index; i++){
-            walker = walker.next;
-        }
-        return walker;
-    }
+
     @Override
     public E get(int index) {
-        if(index < 0 || index >= size()){
-            throw new IndexOutOfBoundsException("Invalid index");
-        }
-        return getNode(index).data;
+        return null;
     }
 
     @Override
@@ -146,43 +122,35 @@ public class MyLinkedList<E> implements List<E> {
 
     @Override
     public void add(int index, E element) {
-        if(index < 0 || index > size()){
-            throw new IndexOutOfBoundsException("Invalid index");
-        }
-        Node<E> newNode = new Node<>(element);
-        if(head == null){
-            head = newNode;
-        } else if (index == 0) {
-            newNode.next = head;
-            head = newNode;
-        } else {
-            Node<E> prev = getNode(index - 1);
-            Node<E> curr = prev.next;
-            newNode.next = curr;
-            prev.next = newNode;
-        }
-
 
     }
 
-    @Override
-
-
-
-    public E remove(int index) {
-        if(index < 0 || index >= size()){
+    public Node<E> getNode(int index){
+        Node<E> walker = tail;
+        int count = size - 1;
+        while (walker.prev != null && count > index){
+            walker = walker.prev;
+            count--;
+        }
+        return walker;
+    }
+    public E remove(int index){
+        if(index < 0 || index >= size){
             throw new IndexOutOfBoundsException("Invalid index");
         }
-        if(index == 0){
-            Node<E> curr = head;
-            head = head.next;
-            return curr.data;
+        E ret;
+        if(index == size - 1){
+            ret = tail.data;
+            tail = tail.prev;
+            size--;
         } else {
-            Node<E> prev = getNode(index - 1);
-            Node<E> curr = prev.next;
-            prev.next = curr.next;
-            return curr.data;
+            Node<E> next = getNode(index + 1);
+            Node<E> curr = next.prev;
+            ret = curr.data;
+            next.prev = curr.prev;
+            size--;
         }
+        return ret;
     }
 
     @Override
@@ -209,5 +177,4 @@ public class MyLinkedList<E> implements List<E> {
     public List<E> subList(int fromIndex, int toIndex) {
         return List.of();
     }
-
 }
