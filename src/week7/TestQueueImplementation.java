@@ -9,17 +9,17 @@ package week7;
 
 public class TestQueueImplementation {
     public static void main(String[] args) {
-        PureQueue<String> queue = new ListQueue<>();
-
-        queue.offer("foo");
-        queue.offer("bar");
-        queue.offer("taco");
-        queue.offer("cat");
-
-        System.out.println(queue.remove());
-        System.out.println(queue.remove());
-        while(queue.peek() != null){
-            System.out.println(queue.remove());
-        }
+//        PureQueue<String> queue = new ListQueue<>();
+//
+//        queue.offer("foo");
+//        queue.offer("bar");
+//        queue.offer("taco");
+//        queue.offer("cat");
+//
+//        System.out.println(queue.remove());
+//        System.out.println(queue.remove());
+//        while(queue.peek() != null){
+//            System.out.println(queue.remove());
+//        }
     }
 }
