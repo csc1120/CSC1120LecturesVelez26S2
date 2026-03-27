@@ -7,11 +7,17 @@ public class RecursionExamplesR2 {
      * @return factorial of n
      */
     public static int factorial(int n){
-        return 0;
+        //base case
+        if(n == 0){
+            return 1;
+        } else { //reductive
+            return n * factorial(n -1);
+
+        }
     }
 
     /**
-     * Returns true is the characters in the str are
+     * Returns true if the characters in the str are
      * in alphabetical order. For example, "ace" would
      * return true and "bar" would return false. A String
      * of length 1 or the empty String would return true
@@ -20,7 +26,12 @@ public class RecursionExamplesR2 {
      * the length of the String is less than 1
      */
     public static boolean inOrder(String str){
-        return false;
+        if(str.length() <= 1){ //base
+            return true;
+        } else { //reductive case
+            boolean test = str.charAt(0) < str.charAt(1);
+            return test && inOrder(str.substring(1));
+        }
     }
 
 
@@ -34,7 +45,17 @@ public class RecursionExamplesR2 {
      * @return number of adjacent, non overlapings 11s
      */
     private static int adjacent11(int[] nums, int index){
-        return 0;
+        if(nums.length <= 1){ // base
+             return 0;
+        } else if (index >= nums.length){
+            return 0;
+        } else { // reductive
+            if(nums[index] == 11 && nums[index + 1] == 1){
+                return 1 + adjacent11(nums, index + 2);
+            } else {
+                return adjacent11(nums, index + 1);
+            }
+        }
     }
 
     public static void main(String[] args) {

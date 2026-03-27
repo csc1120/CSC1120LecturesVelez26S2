@@ -2,52 +2,12 @@ package week8.lecture.recursion;
 
 public class RecursionExamplesR1 {
     public static int Mystery1(int n) {
-        if (n == 1) {
+        if (n == 1) { //base case
             return n;
-        } else {
+        } else { //reductive case
             return n + Mystery1(n - 1);
         }
     }
-
-    public static void main(String[] args) {
-//        System.out.println("Mystery 1");
-//        System.out.println(Mystery1(1));
-//        System.out.println(Mystery1(3));
-//        System.out.println(Mystery1(5));
-
-//        System.out.println(sumNLoop(5));
-
-//        System.out.println("allStarTail w/ wrapper");
-//        System.out.println(allStarTail("horn" ));
-//        System.out.println(allStarTail("bar"));
-//        System.out.println(allStarTail("hello world"));
-
-//        System.out.println("allStarTail");
-//        System.out.println(allStarTail("horn", ""));
-//        System.out.println(allStarTail("bar", ""));
-//        System.out.println(allStarTail("hello world", ""));
-
-//        System.out.println("Mystery 2");
-//        System.out.println(Mystery2("horn"));
-//        System.out.println(Mystery2("bar"));
-//        System.out.println(Mystery2("hello world"));
-
-//        System.out.println("hasEvenA1");
-//        System.out.println(hasEvenA1(new int[] {1,2,3,4,5}, 0));
-//        System.out.println(hasEvenA1(new int[] {1,3,5,7,9}, 0));
-//        System.out.println(hasEvenA1(new int[] {13,3,4,15,1}, 0));
-//
-//        System.out.println("hasEvenA1 w/ wrapper");
-//        System.out.println(hasEvenA1(new int[] {1,2,3,4,5}));
-//        System.out.println(hasEvenA1(new int[] {1,3,5,7,9}));
-//        System.out.println(hasEvenA1(new int[] {13,3,4,15,1}));
-
-//        System.out.println("Mystery 3");
-//        System.out.println(Mystery3(new int[] {1,2,3,4,5}, 0));
-//        System.out.println(Mystery3(new int[] {1,3,5,7,9} ,0));
-//        System.out.println(Mystery3(new int[] {13,3,4,15,1}, 0));
-    }
-
     public static int sumNLoop(int n){
         int ret = 0;
         for(; n >= 1; n--){
@@ -55,6 +15,7 @@ public class RecursionExamplesR1 {
         }
         return ret;
     }
+    //allStar
     public static String Mystery2(String str) {
         if (str.isEmpty()) {
             return "";
@@ -66,23 +27,40 @@ public class RecursionExamplesR1 {
             }
         }
     }
-    //wrapper method
     public static String allStarTail(String str){
         return allStarTail(str, "");
     }
     //Recursive allStarTail
-    public static String allStarTail(String str, String ret){
+    private static String allStarTail(String str, String ret){
         if(str.isEmpty()){
             return ret;
         } else {
-            if(str.charAt(0) != 'o'){
+            if(str.charAt(0) == 'o'){
                 return allStarTail(str.substring(1), ret + str.charAt(0));
             } else {
                 return allStarTail(str.substring(1), ret + "*");
             }
         }
     }
-    public static boolean Mystery3(int[] nums, int index) {
+
+    //{1,2,3,4,5}
+    public static int numEvens(int[] nums, int index){
+        if(index >= nums.length){
+            return 0;
+        } else {
+            if(nums[index] % 2 == 0) {
+                return  1 + numEvens(nums, index + 1);
+            } else {
+                return  0 + numEvens(nums, index + 1);
+            }
+        }
+    }
+    //wrapper
+    public static boolean Mystery3(int [] nums){
+        return Mystery3(nums, 0);
+    }
+    //recursive versino
+    private static boolean Mystery3(int[] nums, int index) {
         if (index == nums.length - 1) {
             return nums[index] % 2 == 0;
         } else {
@@ -93,20 +71,95 @@ public class RecursionExamplesR1 {
             }
         }
     }
-    public static boolean hasEvenA1(int[] nums) {
-        return hasEvenA1(nums, 0);
-    }
     public static boolean hasEvenA1(int[] nums, int index) {
         if (index >= nums.length) {
             return false;
         } else {
-            if (nums[index] % 2 == 0) {
-                return true;
-            } else {
-                return hasEvenA1(nums, index + 1);
+//            if (nums[index] % 2 == 0) {
+//                return true;
+//            } else {
+//                return Mystery3(nums, index + 1);
+//            }
+            return nums[index] % 2 == 0 || Mystery3(nums, index + 1);
             }
-        }
+
     }
+    public static void main(String[] args) {
+        System.out.println("Mystery 3");
+        System.out.println(Mystery3(new int[] {1,2,3,4,5}, 0));
+        System.out.println(Mystery3(new int[] {1,3,5,7,9} ,0));
+        System.out.println(Mystery3(new int[] {13,3,4,15,1}, 0));
+
+        System.out.println(Mystery3(new int[] {1,2,3,4,5}));
+        System.out.println(Mystery3(new int[] {1,3,5,7,9} ));
+        System.out.println(Mystery3(new int[] {13,3,4,15,1}));
+
+//
+//        System.out.println(numEvens(new int[] {1,2,3,4,5}, 0));
+//        System.out.println(numEvens(new int[] {1,3,5,7,9}, 0));
+//
+//        System.out.println("allStarTail");
+//        System.out.println(allStarTail("horn", ""));
+//        System.out.println(allStarTail("bar", ""));
+//        System.out.println(allStarTail("hello world", ""));
+
+//        System.out.println("Mystery 2");
+//        System.out.println(Mystery2("horn")); //h*rn
+//        System.out.println(Mystery2("bar"));
+//        System.out.println(Mystery2("hello world"));
+//        System.out.println("Mystery 1");
+//        System.out.println(Mystery1(1)); //1
+//        System.out.println(Mystery1(3)); //6
+//        System.out.println(Mystery1(5)); //15
+
+
+
+//        System.out.println(sumNLoop(5));
+
+//        System.out.println("allStarTail w/ wrapper");
+//        System.out.println(allStarTail("horn" ));
+//        System.out.println(allStarTail("bar"));
+//        System.out.println(allStarTail("hello world"));
+
+
+
+
+
+//        System.out.println("hasEvenA1");
+//        System.out.println(hasEvenA1(new int[] {1,2,3,4,5}, 0));
+//        System.out.println(hasEvenA1(new int[] {1,3,5,7,9}, 0));
+//        System.out.println(hasEvenA1(new int[] {13,3,4,15,1}, 0));
+//
+//        System.out.println("hasEvenA1 w/ wrapper");
+//        System.out.println(hasEvenA1(new int[] {1,2,3,4,5}));
+//        System.out.println(hasEvenA1(new int[] {1,3,5,7,9}));
+//        System.out.println(hasEvenA1(new int[] {13,3,4,15,1}));
+
+//
+    }
+
+
+
+//    //wrapper method
+//    public static String allStarTail(String str){
+//        return allStarTail(str, "");
+//    }
+
+
+//    public static boolean hasEvenA1(int[] nums) {
+//        return hasEvenA1(nums, 0);
+//    }
+//    public static boolean hasEvenA1(int[] nums, int index) {
+//        if (index >= nums.length) {
+//            return false;
+//        } else {
+//            if (nums[index] % 2 == 0) {
+//                return true;
+//            } else {
+//                return hasEvenA1(nums, index + 1);
+//            }
+//        }
+//    }
     public static boolean hasEvenA2(int[] nums, int index) {
         if (index >= nums.length) {
             return false;
