@@ -15,6 +15,9 @@ public class MyBST<E extends Comparable<E>>
     public MyBST(E data, MyBST<E> left, MyBST<E> right){
         super(data, left, right);
     }
+    public MyBST(){
+        super();
+    }
     /**
      * Attempts to find target within the tree. If
      * it finds the target, returns a reference to
@@ -41,6 +44,7 @@ public class MyBST<E extends Comparable<E>>
             }
         }
     }
+
 
     /**
      * Attempst to add the item to the tree. If the item
