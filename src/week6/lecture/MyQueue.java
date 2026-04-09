@@ -17,7 +17,7 @@ public class MyQueue<E> implements PureQueue<E> {
      */
     @Override
     public boolean offer(E item) {
-        data.add(0, item);
+        data.add(item);
         return true;
     }
     /**

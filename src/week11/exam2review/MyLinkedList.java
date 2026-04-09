@@ -6,7 +6,7 @@
  * Created: 2/24/2026
  */
 
-package week8.lecture;
+package week11.exam2review;
 
 import java.util.*;
 
@@ -125,15 +125,7 @@ public class MyLinkedList<E> implements List<E> {
         //return size;
     }
 
-    private Node<E> getNode(int index){
-        Node<E> walker = head;
-        int count = 0;
-        while (walker.next != null && count < index){
-            walker = walker.next;
-            count++;
-        }
-        return walker;
-    }
+
     @Override
     public boolean add(E e) {
         if(size == 0){
@@ -170,33 +162,37 @@ public class MyLinkedList<E> implements List<E> {
         }
     }
 
+    private Node<E> getNode(int index){
+        Node<E> walker = head;
+        int count = 0;
+        while (walker.next != null && count < index){
+            walker = walker.next;
+            count++;
+        }
+        return walker;
+    }
+
     /**
      * Removes the element at the passed-in index
      * @param index the index of the element to be removed
      * @return Element that was removed.
      */
     public E remove(int index){
-        if(index < 0 || index >= size){
-            throw new IndexOutOfBoundsException("Invalid index "+index);
+        if(index > size -1 || index < 0){
+            throw new IndexOutOfBoundsException();
         }
-        E ret;
+        Node<E> temp;
         if(index == 0){
-            ret = head.data;
-            head = head.next;
-            size--;
+            temp = head;
+            head = temp.next;
         } else {
-//            Node<E> walker = head;
-//            int count = 0;
-//            while (walker.next != null && count < index - 1){
-//                walker = walker.next;
-//                count++;
-//            }
             Node<E> prev = getNode(index - 1);
-            ret = prev.next.data;
-            prev.next = prev.next.next;
-            size--;
+            Node<E> curr = getNode(index);
+            temp = curr;
+            prev.next = curr.next;
         }
-        return ret;
+        size--;
+        return temp.data;
     }
 
     @Override

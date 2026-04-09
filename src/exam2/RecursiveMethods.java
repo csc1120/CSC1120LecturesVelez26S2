@@ -5,7 +5,7 @@
  * Name: Your Name
  * Created: 4/1/2026
  */
-package exam;
+package exam2;
 
 public class RecursiveMethods {
     /**

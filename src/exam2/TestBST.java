@@ -5,7 +5,7 @@
  * Name: Your Name
  * Created: 3/31/2026
  */
-package exam;
+package exam2;
 
 public class TestBST {
     static void main() {
@@ -49,6 +49,18 @@ public class TestBST {
         System.out.println(bst2.numBigger(11)); //0
         System.out.println("Height unbalanced " + bst2.height());
         System.out.println("Size unbalanced "+bst2.size());
+
+        MyBST<Integer> tree = new MyBST<>();
+        tree.add(5);
+        tree.add(3);
+        tree.add(4);
+        tree.add(7);
+        tree.add(6);
+        tree.add(2);
+        tree.add(9);
+
+//        tree.delete(7);
+//        tree.delete(16);
 
 
     }
