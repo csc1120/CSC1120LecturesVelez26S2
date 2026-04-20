@@ -21,13 +21,6 @@ public class BenchmarkSort {
         }
         return ret;
     }
-    private static boolean isSorted(List<Integer> list, int index){
-        if(index >= list.size() - 1){
-            return true;
-        } else {
-            return list.get(index) <= list.get(index + 1) && isSorted(list, index + 1);
-        }
-    }
     static void main() {
         long start;
         long elapsed;
@@ -38,7 +31,7 @@ public class BenchmarkSort {
         list = makeList(0, 1000, 1000);
         control = new ArrayList<>(list);
         Collections.sort(control);         //sort the control with Java libraries
-
+        /*
         start = System.nanoTime();
         SelectionSort selectionSort = new SelectionSort();
         selectionSort.sort(list);
@@ -46,6 +39,7 @@ public class BenchmarkSort {
         elapsed = System.nanoTime() - start;
         System.out.printf("Total time: %.3e ns%n", (double) elapsed);
         System.out.println();
+         */
 
         System.out.println("Selection not sort in place.");
         list = makeList(0, 1000, 1000);
@@ -60,6 +54,7 @@ public class BenchmarkSort {
         System.out.printf("Total time: %.3e ns%n", (double) elapsed);
         System.out.println();
 
+        /*
         final int max = 100_000;
         System.out.println("Insertion sort in order");
         list.clear();
@@ -94,6 +89,6 @@ public class BenchmarkSort {
         elapsed = System.nanoTime() - start;
         System.out.printf("Total time: %.3e ns%n", (double) elapsed);
         System.out.println();
-
+         */
     }
 }

@@ -5,11 +5,11 @@
  * Name: Your Name
  * Created: 4/15/2026
  */
-package week12.lecture;
+package week13;
 
 import java.util.List;
 
-public class InsertionSort {
+public class InsertionSort implements SortAlgorithm {
     public <T extends Comparable<T>> void sort(List<T> list){
         for(int i = 1; i<list.size(); i++){
             int nextPos = i;
