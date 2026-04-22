@@ -33,8 +33,5 @@ public class SelectionSortInPlace {
             orig.set(fill, a);
             orig.set(minIndex, b);
         }
-
-
-
     }
 }

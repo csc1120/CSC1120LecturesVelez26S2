@@ -12,7 +12,7 @@ import java.util.List;
 /**
  * Class that performs an in place selection sort
  */
-public class SelectionSortInPlace implements SortAlgorithm {
+public class SelectionSort implements SortAlgorithm {
     /**
      * Sorts the passed in List.
      * @param orig List to sort

@@ -45,7 +45,7 @@ public class BenchmarkSort {
 
         System.out.println("Selection sort");
         list = makeList(numValues, "random");
-        timeList(new SelectionSortInPlace(), list);
+        timeList(new SelectionSort(), list);
 
 
         System.out.println("Insert sort");
